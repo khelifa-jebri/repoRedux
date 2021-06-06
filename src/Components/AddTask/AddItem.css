@@ -1,0 +1,30 @@
+.card-body{
+    background: linear-gradient(70deg,
+    rgb(188, 187, 247), 
+    rgb(150, 148, 245), 
+    rgb(117, 115, 241))!important;
+}
+
+.Header-Card{
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    font-size: 28px;
+    font-style: italic;
+    color: blue;
+}
+
+.Card-Style{
+    width: 80%;
+}
+
+.btn-filter >*{
+    margin: 1%;
+}
+.Container-Style{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 2%;
+    border-radius: 15px;
+}
