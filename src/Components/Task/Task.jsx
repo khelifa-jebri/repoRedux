@@ -23,13 +23,25 @@ import { FaRegEdit } from "react-icons/fa";
 import { AiOutlineFileDone } from "react-icons/ai";
 
 function Task({ todoTask, className }) {
+
   const dispatch = useDispatch();
+
   const handleCheck = () => {
     dispatch(completeTask(todoTask.id));
   };
-  const [modal, setModal] = useState(false);
 
+  const handleEdit = () => {
+    dispatch(editTask({ id: todoTask.id, description: edit }));
+    toggle();
+  };
+
+  const handleDelete = () => {
+    dispatch(deleteTask(todoTask.id));
+  };
+
+  const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
+
   const [edit, setEdit] = useState(todoTask.description);
 
 
@@ -49,12 +61,15 @@ function Task({ todoTask, className }) {
             }}
             onClick={() => toggle()}
           />
+
+
+
           <Modal isOpen={modal} toggle={toggle} className={className}>
             <ModalHeader
               toggle={toggle}
               onClick={() => setEdit(todoTask.description)}
             >
-              Edit your todo task{" "}
+              Edit your todo task
             </ModalHeader>
             <ModalBody>
               <Form>
@@ -74,7 +89,7 @@ function Task({ todoTask, className }) {
             <ModalFooter>
               <Button
                 color="primary"
-                onClick={() => { dispatch(editTask({ id: todoTask.id, description: edit })); toggle() }}
+                onClick={handleEdit}
               >
                 Save
             </Button>
@@ -89,6 +104,8 @@ function Task({ todoTask, className }) {
             </Button>
             </ModalFooter>
           </Modal>
+
+
 
           <div>
             {todoTask.isDone ? (
@@ -115,7 +132,7 @@ function Task({ todoTask, className }) {
           </div>
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             <BsFillTrashFill
-              onClick={() => dispatch(deleteTask(todoTask.id))}
+              onClick={handleDelete}
               style={{
                 color: "red",
                 fontSize: "30px",

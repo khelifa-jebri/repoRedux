@@ -27,13 +27,11 @@ export const reducerTodo = (state = InitialState, { type, payload }) => {
 
     case DELETE:
       return {
-        ...state,
         tasksList: state.tasksList.filter((item) => item.id !== payload),
       };
 
     case COMPLETE:
       return {
-        ...state,
         tasksList: state.tasksList.map((item) =>
           item.id === payload ? { ...item, isDone: !item.isDone } : item
         ),
@@ -41,7 +39,6 @@ export const reducerTodo = (state = InitialState, { type, payload }) => {
 
     case EDIT:
       return {
-        ...state,
         tasksList: state.tasksList.map((item) =>
           item.id === payload.id ? { ...item, description: payload.description } : item
         ),
@@ -49,18 +46,16 @@ export const reducerTodo = (state = InitialState, { type, payload }) => {
 
     case IS_DONE:
       return {
-        ...state,
         tasksList: state.tasksList.map(item => item).filter((item) => item.isDone === true),
       };
 
     case IS_NOT_DONE:
       return {
-        ...state,
         tasksList: state.tasksList.map(item => item).filter((item) => item.isDone === false),
       };
 
     case REFRESH:
-      return InitialState;
+      return {tasksList:[]};
 
     default:
       return state;
