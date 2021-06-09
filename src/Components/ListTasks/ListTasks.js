@@ -33,7 +33,7 @@ function ListTasks() {
                 <Button style={{ margin: "1%" }} variant="outline-danger" onClick={() => handleNotDone()}> Not Finished Tasks</Button>
             </div>
             {tasks.map((task, index) =>
-                <Task key={index} todoTask={task} />)}
+                <Task key={task.id} todoTask={task} />)}
         </div>
     )
 }

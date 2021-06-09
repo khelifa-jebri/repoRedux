@@ -12,7 +12,8 @@ const InitialState = {
       id: uuidv4(),
       description: "Playing Football",
       isDone: false
-    },],
+    }
+  ],
 };
 
 export const reducerTodo = (state = InitialState, { type, payload }) => {
